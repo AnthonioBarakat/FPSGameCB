@@ -10,6 +10,8 @@ TagManager:
   - BoxWeapon
   - weapon
   - Medkit
+  - Fire
+  - Bullets
   layers:
   - Default
   - TransparentFX

@@ -89,6 +89,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Fire"",
+                    ""type"": ""Button"",
+                    ""id"": ""f8e2cc86-38da-4e92-9424-a6bb3c7c7d02"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -320,6 +329,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""TakeWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cbd00963-ce5a-4f2d-889d-04e1519ea057"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fire"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -853,6 +873,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_onFoot_Sprint = m_onFoot.FindAction("Sprint", throwIfNotFound: true);
         m_onFoot_Interact = m_onFoot.FindAction("Interact", throwIfNotFound: true);
         m_onFoot_TakeWeapon = m_onFoot.FindAction("TakeWeapon", throwIfNotFound: true);
+        m_onFoot_Fire = m_onFoot.FindAction("Fire", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -933,6 +954,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_onFoot_Sprint;
     private readonly InputAction m_onFoot_Interact;
     private readonly InputAction m_onFoot_TakeWeapon;
+    private readonly InputAction m_onFoot_Fire;
     public struct OnFootActions
     {
         private @PlayerInput m_Wrapper;
@@ -944,6 +966,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @Sprint => m_Wrapper.m_onFoot_Sprint;
         public InputAction @Interact => m_Wrapper.m_onFoot_Interact;
         public InputAction @TakeWeapon => m_Wrapper.m_onFoot_TakeWeapon;
+        public InputAction @Fire => m_Wrapper.m_onFoot_Fire;
         public InputActionMap Get() { return m_Wrapper.m_onFoot; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -974,6 +997,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @TakeWeapon.started += instance.OnTakeWeapon;
             @TakeWeapon.performed += instance.OnTakeWeapon;
             @TakeWeapon.canceled += instance.OnTakeWeapon;
+            @Fire.started += instance.OnFire;
+            @Fire.performed += instance.OnFire;
+            @Fire.canceled += instance.OnFire;
         }
 
         private void UnregisterCallbacks(IOnFootActions instance)
@@ -999,6 +1025,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @TakeWeapon.started -= instance.OnTakeWeapon;
             @TakeWeapon.performed -= instance.OnTakeWeapon;
             @TakeWeapon.canceled -= instance.OnTakeWeapon;
+            @Fire.started -= instance.OnFire;
+            @Fire.performed -= instance.OnFire;
+            @Fire.canceled -= instance.OnFire;
         }
 
         public void RemoveCallbacks(IOnFootActions instance)
@@ -1143,6 +1172,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnSprint(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnTakeWeapon(InputAction.CallbackContext context);
+        void OnFire(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

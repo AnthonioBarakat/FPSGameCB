@@ -7,13 +7,20 @@ public class PlayerHealthBar : MonoBehaviour
 {
     private float health;
     private float maxHealth = 100f;
-    //private float delayRate = 12f;
-    //private float lerpTimer;
+	//private float delayRate = 12f;
+	//private float lerpTimer;
 
-    public Image frontHealth, backHealth;
+	[Header("Health Bar")]
+	public Image frontHealth, backHealth;
 
     public Text healthText;
 
+
+	[Header("Damage effect")]
+	public Image overlay; // Damage overlay object
+    public float duration, fadeSpeed; // duration how long image stays fully opaque, fadeSpeed how quickly img will fade
+
+    private float durationTimer; // timer to check the duration
 
     private void Awake()
     {
@@ -23,9 +30,10 @@ public class PlayerHealthBar : MonoBehaviour
     private void Start()
     {
         health = maxHealth;
-    }
+		overlay.color = new Color(overlay.color.r, overlay.color.g, overlay.color.b, 0);
+	}
 
-    private void Update()
+	private void Update()
     {
         health = Mathf.Clamp(health, 0, maxHealth);
         UpdateHealth();
@@ -34,6 +42,17 @@ public class PlayerHealthBar : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.K))
         {
             TakeDamage(7f);
+        }
+
+        if (overlay.color.a > 0)
+        {
+            durationTimer += Time.deltaTime;
+            if (durationTimer > duration)
+            {
+                float tempAlpha = overlay.color.a;
+                tempAlpha -= Time.deltaTime * fadeSpeed;
+                overlay.color = new Color(overlay.color.r, overlay.color.g, overlay.color.b, tempAlpha);
+            }
         }
     }
 
@@ -87,6 +106,8 @@ public class PlayerHealthBar : MonoBehaviour
     public void TakeDamage(float damage)
     {
         health -= damage;
+		overlay.color = new Color(overlay.color.r, overlay.color.g, overlay.color.b, 1);
+        durationTimer = 0;
 
-    }
+	}
 }

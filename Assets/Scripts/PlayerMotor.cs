@@ -9,21 +9,18 @@ public class PlayerMotor : MonoBehaviour
     private Vector3 playerVelocity;
 
     
-    [SerializeField]private float speed = 5f;
+    [SerializeField] private float speed = 5f;
 
     private bool isGrounded;
     private float gravity = -9.8f;
 
     [SerializeField] private float jumpHeight = 1.5f;
 
-
-    // Start is called before the first frame update
     void Awake()
     {
         controller = GetComponent<CharacterController>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         isGrounded = controller.isGrounded;
@@ -37,7 +34,6 @@ public class PlayerMotor : MonoBehaviour
         moveDirection.z = input.y;
         controller.Move(transform.TransformDirection(moveDirection) * speed * Time.deltaTime);
 
-
         // Perform gravity(Make the height of player decrease on y)
         playerVelocity.y += gravity * Time.deltaTime;
         if (isGrounded && playerVelocity.y < 0)
@@ -45,7 +41,6 @@ public class PlayerMotor : MonoBehaviour
             playerVelocity.y = -2f;
         }
         controller.Move(playerVelocity * Time.deltaTime);
-
     }
 
     public void Jump()
@@ -55,6 +50,7 @@ public class PlayerMotor : MonoBehaviour
             playerVelocity.y = Mathf.Sqrt(jumpHeight * -3f * gravity);
         }
     }
+
     public void Crouch()
     {
         if (controller.height == 3)
@@ -62,6 +58,7 @@ public class PlayerMotor : MonoBehaviour
         else if (controller.height == 2)
             controller.height = 3; // the initial height of the charachter controller
     }
+
     public void Sprint(bool isSprinting)
     {
         if (isSprinting)

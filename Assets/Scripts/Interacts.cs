@@ -2,7 +2,9 @@ using Mono.Reflection;
 using Palmmedia.ReportGenerator.Core.CodeAnalysis;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class DoorOpen : MonoBehaviour
@@ -84,6 +86,7 @@ public class DoorOpen : MonoBehaviour
             }
             else if (hitObject.transform.tag == "BoxWeapon" && isBoxOpened)
             {
+
                 textInPromptMessage.text = "Press [F] to take weapon";
                 promptMessage.SetActive(true);
 
@@ -91,8 +94,13 @@ public class DoorOpen : MonoBehaviour
                 {
                     promptMessage.SetActive(false);
 
+                    var boxWeaponComp = hitObject.transform.gameObject.GetComponent<BoxWeapon>();
+
+                    Debug.Log($"picking up {hitObject.transform.name}");
+
                     Destroy(GameObject.Find("boxweapon"));
-                    transform.GetChild(1).gameObject.SetActive(true);
+					gameObject.GetComponent<PlayerBullets>().RestoreBullet(30);
+                    gameObject.GetComponent<PlayerWeapons>().EquipWeapon(boxWeaponComp != null ? boxWeaponComp.weaponIndex : 0);
                 }
             }
             else if (hitObject.transform.tag == "Medkit")
@@ -108,7 +116,19 @@ public class DoorOpen : MonoBehaviour
                     gameObject.GetComponent<PlayerHealthBar>().RestoreHealth();
                 }
             }
+            else if (hitObject.transform.tag == "Bullets")
+            {
+				textInPromptMessage.text = "Press [E] to take bullets";
+				promptMessage.SetActive(true);
 
+				if (inputManager.onFoot.Interact.triggered)
+				{
+					promptMessage.SetActive(false);
+
+                    Destroy(hitObject.transform.gameObject);
+					gameObject.GetComponent<PlayerBullets>().RestoreBullet(100);
+				}
+			}
             else
             {
                 promptMessage.SetActive(false);
