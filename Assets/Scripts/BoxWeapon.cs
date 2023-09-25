@@ -4,5 +4,13 @@ using UnityEngine;
 
 public class BoxWeapon : MonoBehaviour
 {
-    public int weaponIndex = GameManager.;
+	[SerializeField]
+	public int weaponIndex;
+
+	public void Awake()
+	{
+		weaponIndex = GameManager.instance.CountryIndex;
+		//weaponIndex = 1;
+		//Instantiate(weapons[weaponIndex]);
+	}
 }

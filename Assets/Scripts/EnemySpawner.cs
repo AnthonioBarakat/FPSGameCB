@@ -9,7 +9,7 @@ public class MonsterSpawner : MonoBehaviour
     [SerializeField]
     private Transform[] spawnerPostition;
 
-    private GameObject spawnedEnemy;
+    public GameObject spawnedEnemy;
     private int randomSide; // see below
 
 
@@ -27,6 +27,7 @@ public class MonsterSpawner : MonoBehaviour
 
 
             spawnedEnemy.transform.position = spawnerPostition[randomSide].position;
+            
             
         }
 
