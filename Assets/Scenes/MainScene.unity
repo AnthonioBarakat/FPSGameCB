@@ -1263,14 +1263,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f8f0526a14249948b3958b433bb4764, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapons:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!4 &1578708296
 Transform:
   m_ObjectHideFlags: 0

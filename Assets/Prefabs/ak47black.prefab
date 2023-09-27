@@ -178,6 +178,7 @@ GameObject:
   - component: {fileID: 5659819720394106718}
   - component: {fileID: 7915376598011171691}
   - component: {fileID: 7597378256798978964}
+  - component: {fileID: 4281373361985734823}
   m_Layer: 0
   m_Name: ak47black
   m_TagString: weapon
@@ -201,7 +202,7 @@ Transform:
   - {fileID: 6239720049943552209}
   - {fileID: 301887859481322454}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5659819720394106718
 MeshFilter:
@@ -270,6 +271,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4281373361985734823
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8246006485812261441}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.7286756, y: 0.8363636, z: 0.05321061}
+  m_Center: {x: -0.40471232, y: 0.037039965, z: -0.000408479}
 --- !u!1 &8915154695162972637
 GameObject:
   m_ObjectHideFlags: 0

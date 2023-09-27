@@ -1,10 +1,4 @@
-using Mono.Reflection;
-using Palmmedia.ReportGenerator.Core.CodeAnalysis;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class DoorOpen : MonoBehaviour
@@ -141,12 +135,4 @@ public class DoorOpen : MonoBehaviour
     }
 }
 
-//IEnumerator OpenDoor()
-//    {
-//        isOpening = true;
-//        door.GetComponent<Animator>().Play("DoorOpen");
-//        yield return new WaitForSeconds(5f);
-//        door.GetComponent<Animator>().Play("New State");
-//        isOpening = false;
-//    }
-//}
+

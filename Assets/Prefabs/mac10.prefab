@@ -292,6 +292,7 @@ GameObject:
   - component: {fileID: 9159425972745623678}
   - component: {fileID: 4435242494641827145}
   - component: {fileID: 1179047920812264075}
+  - component: {fileID: 5083397162256815168}
   m_Layer: 0
   m_Name: mac10
   m_TagString: Untagged
@@ -318,7 +319,7 @@ Transform:
   - {fileID: 7969999691589955531}
   - {fileID: 7018873268641344566}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &9159425972745623678
 MonoBehaviour:
@@ -386,6 +387,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5083397162256815168
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7723478761140063746}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.69742894, y: 0.39695567, z: 0.08540472}
+  m_Center: {x: 0.005910188, y: 0.02733314, z: 0.0019996166}
 --- !u!1 &8384203174852665620
 GameObject:
   m_ObjectHideFlags: 0

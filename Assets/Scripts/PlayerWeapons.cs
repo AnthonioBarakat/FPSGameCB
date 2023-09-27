@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public class PlayerWeapons : MonoBehaviour
@@ -12,10 +11,12 @@ public class PlayerWeapons : MonoBehaviour
     private bool isShooting;
 
 	private PlayerBullets _playerBullets;
+	AudioSource audioSource;
 
 	private void Awake()
 	{
 		_playerBullets = GetComponent<PlayerBullets>();
+		audioSource = GetComponent<AudioSource>();
 	}
 
 	void Update()
@@ -47,6 +48,9 @@ public class PlayerWeapons : MonoBehaviour
 			EquipedWeapon.FireWeapon();
 			Instantiate(fireVFX, EquipedWeapon.firePoint);
 			_playerBullets.SubstractBullet(1);
+
+			
+			audioSource.PlayOneShot(audioSource.clip);
 		}
 	}
 

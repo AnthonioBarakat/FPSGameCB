@@ -34,6 +34,14 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
+	public void Update()
+	{
+		if (Input.GetKeyDown(KeyCode.Escape))
+		{
+			UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene");
+		}
+	}
+
 	private void OnEnable()
 	{
 		// add function to event

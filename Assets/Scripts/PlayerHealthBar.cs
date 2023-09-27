@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -61,7 +60,8 @@ public class PlayerHealthBar : MonoBehaviour
         // destroy player if health 0 or less
         if (health <= 0)
         {
-            Destroy(gameObject);
+			UnityEngine.SceneManagement.SceneManager.LoadScene("SampleScene");
+			//Destroy(gameObject);
         }
 
 

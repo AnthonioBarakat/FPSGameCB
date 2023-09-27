@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public class BoxWeapon : MonoBehaviour
@@ -7,9 +6,12 @@ public class BoxWeapon : MonoBehaviour
 	[SerializeField]
 	public int weaponIndex;
 
-	public void Awake()
+	public void Start()
 	{
-		weaponIndex = GameManager.instance.CountryIndex;
+		GameManager gameManager = GameManager.instance;
+		if (gameManager != null )
+			weaponIndex = gameManager.CountryIndex;
+
 		//weaponIndex = 1;
 		//Instantiate(weapons[weaponIndex]);
 	}
